@@ -289,7 +289,7 @@ class DartboardMapper {
                         segment: '3',
                         description: '3 - Single (advances 1 base)'
                     };
-                } else if (dy > 0) {
+                } else if (dy < 0) {
                     return {
                         area: 'Out (3rd Base)',
                         points: -1,
