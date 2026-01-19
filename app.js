@@ -206,7 +206,15 @@ class DartboardMapper {
             // Determine base position
             if (angle >= 315 || angle < 45) {
                 // Top - 2nd base
-                if (dx > 0) {
+                // Check for Ball 2 at top
+                if (distance > 230 * this.scale && distance < 310 * this.scale && angle >= 350 || angle <= 10) {
+                    return {
+                        area: 'Ball 2',
+                        points: 1,
+                        segment: '2',
+                        description: '2 - Single (advances 1 base)'
+                    };
+                } else if (dx > 0) {
                     return {
                         area: 'Out (2nd Base Right)',
                         points: -1,
@@ -223,8 +231,8 @@ class DartboardMapper {
                 }
             } else if (angle >= 45 && angle < 135) {
                 // Right - 1st base
-                // Determine if it's Ball number or Out/Foul
-                if (angle >= 60 && angle < 80 && distance > 220 * this.scale) {
+                // Check for Ball 1
+                if (distance > 230 * this.scale && distance < 310 * this.scale && angle >= 80 && angle <= 100) {
                     return {
                         area: 'Ball 1',
                         points: 1,
@@ -248,7 +256,15 @@ class DartboardMapper {
                 }
             } else if (angle >= 135 && angle < 225) {
                 // Bottom - Home plate
-                if (dx < 0) {
+                // Check for HR area
+                if (distance > 250 * this.scale && angle >= 170 && angle <= 190) {
+                    return {
+                        area: 'Home Run',
+                        points: 4,
+                        segment: 'HR',
+                        description: 'HR - Home Run (all runners score)'
+                    };
+                } else if (dx < 0) {
                     return {
                         area: 'Foul (Home Left)',
                         points: 0,
@@ -265,8 +281,8 @@ class DartboardMapper {
                 }
             } else {
                 // Left - 3rd base
-                // Determine if it's Ball number or Out/Foul
-                if (angle >= 280 && angle < 300 && distance > 220 * this.scale) {
+                // Check for Ball 3
+                if (distance > 230 * this.scale && distance < 310 * this.scale && angle >= 260 && angle <= 280) {
                     return {
                         area: 'Ball 3',
                         points: 1,
@@ -309,11 +325,20 @@ class DartboardMapper {
                     description: 'FOUL - Strike if less than 2 strikes'
                 };
             } else if (angle >= 135 && angle < 225) {
+                // Check if it's the HR zone (bottom center)
+                if (angle >= 165 && angle <= 195 && distance > 330 * this.scale) {
+                    return {
+                        area: 'Home Run',
+                        points: 4,
+                        segment: 'HR',
+                        description: 'HR - Home Run (all runners score)'
+                    };
+                }
                 return {
-                    area: 'Home Run',
-                    points: 4,
-                    segment: 'HR',
-                    description: 'HR - Home Run (all runners score)'
+                    area: 'Foul (Bottom)',
+                    points: 0,
+                    segment: 'Foul',
+                    description: 'FOUL - Strike if less than 2 strikes'
                 };
             } else {
                 return {
