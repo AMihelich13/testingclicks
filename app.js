@@ -207,7 +207,7 @@ class DartboardMapper {
             if (angle >= 315 || angle < 45) {
                 // Top - 2nd base
                 // Check for Ball 2 at top
-                if (distance > 230 * this.scale && distance < 310 * this.scale && angle >= 350 || angle <= 10) {
+                if (distance > 230 * this.scale && distance < 310 * this.scale && (angle >= 350 || angle <= 10)) {
                     return {
                         area: 'Ball 2',
                         points: 1,
