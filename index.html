@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dartball Board Click Mapper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dartball Board Click Mapper</h1>
+        <p class="instructions">Click on different areas of the dartball board to identify the play</p>
+        
+        <div class="dartboard-container">
+            <img id="dartboard" src="Dartball-Dartboard-2.gif" alt="Dartball Board">
+            <canvas id="clickCanvas"></canvas>
+        </div>
+        
+        <div class="result-panel">
+            <h2>Play Result</h2>
+            <div id="result" class="result">Click on the dartball board to see the play</div>
+            <div id="coordinates" class="coordinates"></div>
+        </div>
+        
+        <div class="legend">
+            <h3>Dartball Board Areas</h3>
+            <ul>
+                <li><span class="color-box center-diamond"></span> Center: SH (Sacrifice), 2BS (Double), DP (Double Play)</li>
+                <li><span class="color-box ball-zone"></span> Ball (B) - No score</li>
+                <li><span class="color-box strike-zone"></span> Strike - No score</li>
+                <li><span class="color-box single"></span> Singles (1, 3) - Advance 1 base</li>
+                <li><span class="color-box out-zone"></span> Out - Batter is out</li>
+                <li><span class="color-box foul-zone"></span> Foul - Strike if less than 2</li>
+                <li><span class="color-box hr-zone"></span> HR (Home Run) - All runners score</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
